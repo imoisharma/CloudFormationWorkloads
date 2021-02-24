@@ -192,7 +192,16 @@
             "FromPort" : "22",
             "ToPort" : "22",
             "CidrIp" : { "Ref" : "SSHLocation"}
-          } ]
+          } ],
+          "SecurityGroupIngress": [
+              {
+                  "IpProtocol":"tcp",
+                  "FromPort": "80",
+                  "ToPort": "80",
+                  "CidrIp" : { "Ref": "SSHLocation"}
+              }
+          ]
+
         }
       }
     },
