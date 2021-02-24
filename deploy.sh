@@ -11,7 +11,9 @@ del=delete
 if  [ $1 = $cr ]
 then
     echo "Your CloudFormation Stack CREATE_IN_PROGRESS ..."
-    echo `aws cloudformation create-stack --stack-name myteststack --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
+    echo `aws cloudformation create-stack --stack-name myteststack2 --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
+    echo `EC2 instance Resource Creation Initated ... (this can take up to 60 seconds)`
+    sleep 60
     echo `aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text --profile mohit-ssa` >> public-ip.txt 
     echo `tail -n 1 public_ip.txt` >> URL
     echo `cat URL|xargs curl -o output -vvvvv`
