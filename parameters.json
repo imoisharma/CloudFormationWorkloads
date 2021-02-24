@@ -1,6 +1,6 @@
 [
     {
     "ParameterKey":"KeyName",
-    "ParameterValue":"test-private-key"
+    "ParameterValue":"my-public-key"
 }
 ]
