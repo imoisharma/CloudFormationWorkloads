@@ -10,9 +10,9 @@ del=delete
 # checking the if-elif and else condition, if the condition matches perform the certain actions
 if  [ $1 = $cr ]
 then
-    
+    echo `aws ec2 import-key-pair --key-name "my-public-key" --public-key-material fileb://my-public-key.pub --profile mohit-ssa`
     echo "Your CloudFormation Stack CREATE_IN_PROGRESS ..."
-    echo `aws cloudformation create-stack --stack-name myteststack777 --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
+    echo `aws cloudformation create-stack --stack-name myteststack --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
     echo "EC2 instance Resource Creation Initated ..."
     # sleep 5
     # echo "this can take up to 60 seconds ..."
