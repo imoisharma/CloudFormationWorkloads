@@ -1,6 +1,6 @@
 [
     {
     "ParameterKey":"KeyName",
-    "ParameterValue":"CF-Test-KP"
+    "ParameterValue":"test-private-key"
 }
 ]
