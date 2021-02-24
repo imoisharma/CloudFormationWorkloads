@@ -17,14 +17,17 @@ then
     sleep 5
     echo "Resource creation may take up to 1-2 minutes or sometimes even more due to poor network, so please be patient. Running ..."
     sleep 10
-    echo "Waiting for the EC2 Public Ip ..."
-    sleep 100
+    echo "Waiting for your EC2 instance to assigned the Public Ip from Amazon IPV4 pool address ..."
+    echo "..."
+    sleep 120
     echo `aws ec2 describe-instances --profile mohit-ssa | jq '.["Reservations"]|.[]|.Instances|.[]|.LaunchTime + "  "  + .PublicIpAddress' | sort -n > public_ip.txt`
     echo `tail -n 1 public_ip.txt` > URL
-    echo `grep -o '[0-9]\{2,3\}\.[0-9]\{2,3\}\.[0-9]\{2,3\}\.[0-9]\{2,3\}' URL > output-url`
+    echo `grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' URL > output-url`
     IP=`cat output-url`
     echo `cat output-url |xargs curl -o output -vvvvv`
-    echo "Congratulations! You have launched the Apache Server Sucessfully. To see the server, refer to this: https://$IP"
+    echo "Congratulations! You have successfully launched the Apache Server. To see the server, refer to this: http://$IP (Please note, if the server is still loading, 
+          which means ec2-instance is still initializing, so please be patient or check your ec2-instance status for here 
+          https://console.aws.amazon.com/ec2/home?#Instances:instanceState=running"
     # echo `output`
 
 elif [ $1 = $del ]
@@ -38,5 +41,3 @@ else
     2. './deploy.sh delete' for deleting the CloudFormation Stack"
 # close the if 
 fi 
-
-# end of the script
