@@ -11,18 +11,20 @@ del=delete
 if  [ $1 = $cr ]
 then
     # echo `aws ec2 import-key-pair --key-name "my-public-key" --public-key-material fileb://my-public-key.pub --profile mohit-ssa`
-    echo "Your CloudFormation Stack CREATE_IN_PROGRESS ..."
-    echo `aws cloudformation create-stack --stack-name myteststack --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
-    echo "EC2 instance Resource Creation Initated ..."
+    echo "Your CloudFormation Stack CREATE_IN_PROGRESS BEGINS ..."
+    echo `aws cloudformation create-stack --stack-name myteststack1 --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
+    echo "EC2 instance Resources Creation Initated ..."
     sleep 5
-    echo "this can take up to 1-2 minutes or sometimes even more due to poor network ..."
-    sleep 120
+    echo "Resource creation may take up to 1-2 minutes or sometimes even more due to poor network, so please be patient. Running ..."
+    sleep 10
+    echo "Waiting for the EC2 Public Ip ..."
+    sleep 100
     echo `aws ec2 describe-instances --profile mohit-ssa | jq '.["Reservations"]|.[]|.Instances|.[]|.LaunchTime + "  "  + .PublicIpAddress' | sort -n > public_ip.txt`
     echo `tail -n 1 public_ip.txt` > URL
     echo `grep -o '[0-9]\{2,3\}\.[0-9]\{2,3\}\.[0-9]\{2,3\}\.[0-9]\{2,3\}' URL > output-url`
-    echo `file=cat output-url`
+    IP=`cat output-url`
     echo `cat output-url |xargs curl -o output -vvvvv`
-    echo "Congratulations! You've launched the Apache Server Sucessfully. To see the server, refer to this: https://$file"
+    echo "Congratulations! You have launched the Apache Server Sucessfully. To see the server, refer to this: https://$IP"
     # echo `output`
 
 elif [ $1 = $del ]
