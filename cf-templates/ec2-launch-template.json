@@ -535,9 +535,7 @@
                     "sudo yum -y install httpd \n",
                     "systemctl start httpd \n",
                     "systemctl enable httpd \n",
-                    "ec2-metadata -i > /var/www/html/index.html",
-                    "var=Congratulations!",
-                    "sudo echo $var >> /var/www/html/index.html"
+                    "ec2-metadata -i > /var/www/html/index.html"
             ]]}}
             }
         },
