@@ -27,8 +27,9 @@ Assuming that you have Git & AWS CLI installed and set-up properly.
 
 * AWS CLI must be Installed and configured. And, if you are using different AWS accounts, set up the profile tag accordingly (In the above deploy.sh script, I've provided my profile tag, you change accordingly if you are using profile tag. If not removed it). 
 
-Learn more about named profiles -https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-                                - https://www.youtube.com/watch?v=Jhjp19bGakg 
+Learn more about named profiles:
+- https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
+- https://www.youtube.com/watch?v=Jhjp19bGakg 
 
 
 * By default, parameter is set to `t2.micro` so if you want to use different instance type,set-up accordingly. Either, provide parameters attributes inside the ec2-parameter.json file or inside the cf-template.json file.
