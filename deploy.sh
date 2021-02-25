@@ -1,5 +1,6 @@
 # start the basic bash shell script
 #!/bin/bash 
+set -x
 # created two variables
 cr=create
 del=delete
