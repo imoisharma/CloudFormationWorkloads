@@ -8,10 +8,10 @@ del=delete
 if  [ $1 = $cr ]
 then
     echo "Importing the Key Pair ..."
-    echo `aws ec2 import-key-pair --key-name "ephemeral-key" --public-key-material fileb://key/ephemeral-key.pub --profile mohit-ssa`
+    echo `aws ec2 import-key-pair --key-name "ephemeral-key" --public-key-material fileb://key/ephemeral-key.pub`
     echo "Key Imported, Succesfully!"
     echo "Your CloudFormation Stack CREATE_IN_PROGRESS BEGINS ..."
-    echo `aws cloudformation create-stack --stack-name cf-stack --template-body file://cf-templates/ec2-launch-template.json --parameters file://ec2-parameters.json --profile mohit-ssa`
+    echo `aws cloudformation create-stack --stack-name cf-stack --template-body file://cf-templates/ec2-launch-template.json --parameters file://ec2-parameters.json`
     echo "EC2 instance Resources Creation Initated ..."
     sleep 5
     echo "EC2 Resource creation may take up to 1-2 minutes or sometimes even more due to poor network, so please be patient ..."
@@ -24,7 +24,7 @@ then
     echo "Waiting for your EC2 instance to assigned the Public Ip Address from Amazon IPV4 pool address ..."
     echo "Few more seconds to go ..."
     sleep 70
-    echo `aws ec2 describe-instances --profile mohit-ssa | jq '.["Reservations"]|.[]|.Instances|.[]|.LaunchTime + "  "  + .PublicIpAddress' | sort -n > public_ip.txt`
+    echo `aws ec2 describe-instances | jq '.["Reservations"]|.[]|.Instances|.[]|.LaunchTime + "  "  + .PublicIpAddress' | sort -n > public_ip.txt`
     echo `tail -n 1 public_ip.txt` > URL
     echo `grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' URL > output-url`
     IP=`cat output-url`
@@ -33,7 +33,10 @@ then
     echo " *Note- If the server is still loading the page, which means ec2-instance is still initializing the resources, so please be patient or check your ec2-instance status for here https://console.aws.amazon.com/ec2/home?#Instances:instanceState=running"
 elif [ $1 = $del ]
 then
-    echo `aws cloudformation delete-stack --stack-name cf-stack --profile mohit-ssa`
+    echo "Deleting Existing Ephemeral Key"
+    echo `aws ec2 delete-key-pair --key-name ephemeral-key`
+    sleep 10
+    echo `aws cloudformation delete-stack --stack-name cf-stack`
     echo "Your CloudFormation Stack DELETE_IN_PROGRESS ..."
     sleep 5
     echo "Successfully, CloudFormation Stack Deleted!"
