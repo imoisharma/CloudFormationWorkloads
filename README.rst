@@ -33,6 +33,6 @@ Learn more about named profiles:
 2. https://www.youtube.com/watch?v=Jhjp19bGakg 
 
 
-* By default, parameter is set to `t2.micro` so if you want to use different instance type,set-up accordingly. Either, provide parameters attributes inside the `ec2-parameters.json` file or change the default attribute inside the ec2-launch-template.json file.
+* By default, parameter is set to `t2.micro` so if you want to use different instance type,set-up accordingly. Either, provide parameters attributes inside the ``ec2-parameters.json`` file or change the default attribute inside the ``ec2-launch-template.json`` file.
 
 
