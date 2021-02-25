@@ -1,6 +1,6 @@
 [
     {
     "ParameterKey":"KeyName",
-    "ParameterValue":"my-public-key"
+    "ParameterValue":"fileb://key/ephemeral-key"
 }
 ]
