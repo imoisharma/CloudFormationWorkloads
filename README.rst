@@ -21,7 +21,9 @@ Assuming that you have Python and ``virtualenv`` installed, set up your environm
     $ ./deploy.sh delete #delete the CF-Stack
 .. code-block:: sh
 
-* Kind Attention *:
+=====
+`Attention`
+=====
 
 * AWS CLI must be Installed and configured. And, if you are using different AWS accounts, set up the profile accordingly (In the above deploy.sh script, I've provided my profile tag, you change accordingly if you are using profile tag. If not removed it)
 * By default, parameter is set to `t2.micro` so if you want to use different instance type,set-up accordingly inside the parameters folder or inside the cf-template folder.
