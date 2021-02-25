@@ -535,7 +535,7 @@
                     "sudo yum -y install httpd \n",
                     "systemctl start httpd \n",
                     "systemctl enable httpd \n",
-                    "ec2-metadata -i > /var/www/html/index.html"
+                    "echo Your EC2-Instance ID: `ec2-metadata -i > /var/www/html/index.html`"
             ]]}}
             }
         },
