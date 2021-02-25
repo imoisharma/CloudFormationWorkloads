@@ -8,10 +8,10 @@ if  [ $1 = $cr ]
 then
     # echo `aws ec2 import-key-pair --key-name "my-public-key" --public-key-material fileb://my-public-key.pub --profile mohit-ssa`
     echo "Your CloudFormation Stack CREATE_IN_PROGRESS BEGINS ..."
-    echo `aws cloudformation create-stack --stack-name myteststack1 --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
+    echo `aws cloudformation create-stack --stack-name myteststack11 --template-body file://test.json --parameters file://parameters.json --profile mohit-ssa`
     echo "EC2 instance Resources Creation Initated ..."
     sleep 5
-    echo "EC2 Resource creation may take up to 1-2 minutes or sometimes even more due to poor network, so please be patient."
+    echo "EC2 Resource creation may take up to 1-2 minutes or sometimes even more due to poor network, so please be patient ..."
     echo "CREATE IN PROGRESS ..."
     sleep 10
     echo "Installing the Apache Server ..."
