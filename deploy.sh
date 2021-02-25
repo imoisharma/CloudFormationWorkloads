@@ -21,7 +21,7 @@ then
     echo "Apache Server Installed, Sucessfully!"
     sleep 5
     echo "Waiting for your EC2 instance to assigned the Public Ip Address from Amazon IPV4 pool address ..."
-    echo "Few more seconds more to go ..."
+    echo "Few more seconds to go ..."
     sleep 70
     echo `aws ec2 describe-instances --profile mohit-ssa | jq '.["Reservations"]|.[]|.Instances|.[]|.LaunchTime + "  "  + .PublicIpAddress' | sort -n > public_ip.txt`
     echo `tail -n 1 public_ip.txt` > URL
@@ -34,7 +34,7 @@ elif [ $1 = $del ]
 then
     echo `aws cloudformation delete-stack --stack-name cf-stack --profile mohit-ssa`
     echo "Your CloudFormation Stack DELETE_IN_PROGRESS ..."
-    sleep 2
+    sleep 5
     echo "Successfully, CloudFormation Stack Deleted!"
 else
     echo "You provided wrong argument. Please pass the (create or delete) argument only. For example- 1. < ./deploy.sh create > for creating the CloudFormation Stack 2. < ./deploy.sh delete > for deleting the CloudFormation Stack "
