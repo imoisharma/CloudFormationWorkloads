@@ -1,5 +1,5 @@
 =======================
- CloudFormationWorkloads
+ CloudFormation Workloads
 =======================
 
 This repository contains the simple script which provision the ec2 server on AWS which printing the simple html index
