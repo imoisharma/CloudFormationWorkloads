@@ -11,7 +11,7 @@
 # Repository:
 ################################################################
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Security: KMS customer managed key(CMK) for Development Environment'
+Description: 'Security: KMS customer managed key(CMK) for your Environment'
 Metadata:
   'AWS::CloudFormation::Interface':
     ParameterGroups:
@@ -106,11 +106,11 @@ Parameters:
     Description: 'A Tag to differenciate the environment'
     Type: String
     AllowedValues:
-      - Development
-      - Production
-      - PreProd
-      - Staging
-    Default: Development
+      - Environment1
+      - Environment2
+      - Environment3
+      - Environment4
+    Default: Environment1 # and so on ...
   Project:
     Description: 'The name of the project on this resource' 
     Type: String
