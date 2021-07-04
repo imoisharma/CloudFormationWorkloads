@@ -2,8 +2,7 @@
  Cloud Formation Workloads
 =======================
 
-This repository contains the simple script which provision the ec2 server on AWS which printing the simple html index
-page that displaying the EC2 instance ID of the instance responding to the request.
+This repository contains the cloudformation templates for AWS services which can be used for deploying different services provided by AWS.
 
 Steps:
 To deploy the Cloud Formation template, simply download or clone the repo and run `./deploy.sh create`.
@@ -11,15 +10,7 @@ Similarly for deleting the Cloud Formation template, simply run `./deploy.sh del
 
 Getting Started
 ---------------
-Assuming that you have Git & AWS CLI installed and set-up properly. 
-
-.. code-block:: sh
-
-    $ git clone https://github.com/boto/boto3.git
-    $ cd CloudFormationWorkloads
-    $ ./deploy.sh create #create the CF-Stack
-    $ ./deploy.sh delete #delete the CF-Stack
-.. code-block:: sh
+Assuming that you have Git & AWS CLI installed and have set-up AWS account or have IAM user or assume-role access. 
 
 =====
 `*Attention`
