@@ -89,28 +89,30 @@ Parameters:
     Description: 'Which country tag to apply to the service?'
     Type: String
     AllowedValues:
-      - Country1
-      - Country2
-      - Country3
-    Default: Country1
+      - Australia
+      - USA
+      - India
+      - China
+    Default: Australia
   Department:
     Description: 'Which department tag to apply to the service?'
     Type: String
     AllowedValues:
-      - Department1
-      - Department2
-      - Department3
-      - Department 4 # and so on. 
-    Default: Department
+      - InformationTechnology
+      - General-Department
+      - Finance
+      - Marketing
+      - Operations
+    Default: InformationTechnology
   Environment:
     Description: 'A Tag to differenciate the environment'
     Type: String
     AllowedValues:
-      - Environment1
-      - Environment2
-      - Environment3
-      - Environment4
-    Default: Environment1 # and so on ...
+      - Testing
+      - Development
+      - Staging
+      - Production
+    Default: Testing # and so on ...
   Project:
     Description: 'The name of the project on this resource' 
     Type: String
@@ -118,10 +120,6 @@ Parameters:
   Service:
     Description: 'The name of the service on this resource'
     Type: String
-    AllowedValues:
-      - Service1
-      - Service2
-      - Service3
     Default: Service1
 Conditions:
   HasAlertTopic: !Not [!Equals [!Ref ParentAlertStack, '']]
